@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Commence la section image -->
+
+<div class="form-container ">
+  <div class="row">
+    <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 form-group">
+        <h2 class="text-primary center">Prédiction du risque cardiaque </h2>
+    </div>
+    {% if result %}
+    <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 form-group btn btn-info">
+      {% if result == 1 %}
+      <p>
+        Vous avez un probleme cardiaque
+      </p>
+      {% else %}
+      <p>
+        Vous n'avez aucun probleme cardiaque
+      </p>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+<!-- Fin de la section image -->
+
+
+<!-- Commence la section du formulaire -->
+<div class="form-container ">
+  <form class="form-horizontal" action="/prediction/" method="post">
+
+    <div class="row">
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <input type="number" id="AGE"  name="age" class="form-control" placeholder=" SAISIR VOTRE AGE" required>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <select type="number" name="sexe" class="form-control" id="SEXE"  required>
+          <option  disabled selected hidden>CHOISIR LE SEXE</option>
+          <option value="homme">HOMME</option>
+          <option value="femme">FEMME</option>
+        </select>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <select type="number" name="tdt" id="TDT" class="form-control" required>
+          <option disabled selected hidden>CHOISIR UN TDT</option>
+          <option value="AA">AA</option>
+          <option value="DNA">DNA</option>
+          <option value="ASY">ASY</option> 
+          <option value="AT">AT</option> 
+        </select>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <input type="number" name="par" id="PAR" class="form-control" placeholder="SAISIR UN PAR" required>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <input type="number" name="cholesterol" id="CHOLESTEROL" class="form-control" placeholder="SAISIR UN CHOLESTEROL" required>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <select type="number" name="gaj" id="GAJ" class="form-control" required>
+          <option  disabled selected hidden>Avez vous une GAJ ?</option>
+          <option value="Oui">oui</option>
+          <option value="Nom">non</option>
+        </select>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <select type="number" name="ecg" id="ECG" class="form-control" required>
+          <option disabled selected hidden>CHOISIR UN ECG</option>
+          <option value="Normal">Normal</option>
+          <option value="ST">ST</option>
+          <option value="LVH">LVH</option>
+        </select>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <input type="number" name="fcmax"  id="FCMAX" class="form-control" placeholder="SAISIR UN FCMAX" required>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <select type="number" name="angine" id="ANGINE" class="form-control" required>
+          <option  disabled selected hidden>Avez vous une Angine ?</option>
+          <option value="Non">Non</option>
+          <option value="Oui">Oui</option>
+        </select>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 form-group">
+        <input type="number"  name="depression" id="DEPRESSION"  class="form-control" placeholder=" SAISIR UNE DEPRESSION" required>
+      </div>
+      <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 form-group">
+        <select type="number" name="pente" id="PENTE" class="form-control" required>
+          <option disabled selected hidden>CHOISIR UNE PENTE</option>
+          <option value="Ascendant">Ascendant</option>
+          <option value="Plat">Plat</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6  form-group row">
+        <button type="submit" class="btn btn-primary">Prédire</button>
+    </div>
+  </form>
+  <!-- Termine la section du formulaire -->
+</div>
+
+{% endblock %}
